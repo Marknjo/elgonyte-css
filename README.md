@@ -2,7 +2,11 @@
 
 ## :balloon: Overview
 
-This is part of the Elgonyte e-commerce workflow, this the stage where the UI designs are converted to static html and css files. The goal is to separate UI works from frontend and backend. The backend here refers to the Jamstack way of building applications using React, and Next JS. Note the design to not include the effects as UX is implemented at that stage. Since I am the only one building the project, I will implement the UX in the code, so I can spend less time designing. Therefore, this repo holds all the project's html and css files.
+This is part of the Elgonyte e-commerce workflow. It represents the stage where the UI designs are converted to static html and css files. The goal is to separate UI works from frontend and backend.
+
+The backend here refers to the Jamstack way of building applications using React, and Next JS.
+
+Note, the design does't not include UX effects. Since I am the only one building the project, I will implement the UX in the code, so I can spend less time designing. Therefore, this repo holds all the project's html and css files.
 
 All designs are created using [Adobe XD](https://www.adobe.com/products/xd.html).
 
