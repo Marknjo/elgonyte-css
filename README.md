@@ -4,7 +4,7 @@
 
 This is part of the Elgonyte e-commerce workflow, this the stage where the UI designs are converted to static html and css files. The goal is to separate UI works from frontend and backend. The backend here refers to the Jamstack way of building applications using React, and Next JS. Note the design to not include the effects as UX is implemented at that stage. Since I am the only one building the project, I will implement the UX in the code, so I can spend less time designing. Therefore, this repo holds all the project's html and css files.
 
-All designs are created using [Adobe XD](https://www.adobe.com/products/xd.html){:target="\_blank"}.
+All designs are created using [Adobe XD](https://www.adobe.com/products/xd.html).
 
 ## :anger: Requirement
 
@@ -36,10 +36,10 @@ Below is the final design of the home page design.
 4. Featured Products 1 - different designs
 5. Big section - Callout
 6. Featured Products 2 - different designs
-7. Gallery (Scraped this section - [see explanation](https://github.com/Marknjo/elgonyte/issues/44){:target="\_blank"})
+7. Gallery (Scraped this section - [see explanation](https://github.com/Marknjo/elgonyte/issues/44))
 8. Recently viewed
 9. Footer
 
-To view the project board, visit this link [Design Home Page](https://github.com/Marknjo/elgonyte/projects/6){:target="\_blank"})
+To view the project board, visit this link [Design Home Page](https://github.com/Marknjo/elgonyte/projects/6))
 
 ![Home - Page](https://user-images.githubusercontent.com/19428492/123286563-b05fd780-d516-11eb-875e-71126eedb7f1.jpg)
