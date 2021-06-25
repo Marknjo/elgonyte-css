@@ -2,36 +2,100 @@
  * Basic typography style for copy text
  */
 
-@import url();
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,300;0,400;0,700;0,800;0,900;1,300;1,400;1,700&display=swap');
+
+%headers {
+  line-height: 1;
+  font-weight: var(--weight-normal);
+}
+
+.h1 {
+  @extend %header !optional;
+  font-size: var(--size-44);
+  font-weight: var(--weight-100);
+}
 
 body {
   font-size: var(--size-16);
-}
-
-.small-text {
-  font-size: var(--size-14);
+  font-weight: var(--weight-normal);
+  font-family: $text-font;
+  color: var(--grey-tint-900);
 }
 
 h1 {
-  font-size: var(--size-44);
+  @extend .h1;
+}
+
+.h1-heavy {
+  @extend .h1;
+  font-weight: var(--weight-800);
+  color: var(--orange-red-darker);
 }
 
 h2 {
+  @extend %header !optional;
   font-size: var(--size-36);
+  font-weight: var(--weight-300);
 }
 
 h3 {
+  @extend %header !optional;
   font-size: var(--size-24);
 }
 
 h4 {
   font-size: var(--size-20);
+
+  @extend %header !optional;
 }
 
 h5 {
+  @extend %header !optional;
   font-size: var(--size-18);
+  font-weight: var(--weight-700);
+  font-style: var(--style-italic);
 }
 
 h6 {
+  @extend %header !optional;
   font-size: var(--size-16);
+  font-weight: var(--weight-700);
+  font-style: var(--style-italic);
+}
+
+/// Helper Text styles
+.text {
+  &-upper {
+    text-transform: uppercase;
+  }
+
+  &-faded {
+    color: var(--grey-tint-500);
+  }
+
+  &-grey {
+    color: var(--grey-tint-600);
+  }
+
+  &-darkest {
+    color: var(--grey-tint-darkest);
+  }
+
+  &-small {
+    font-size: var(--size-14);
+  }
+
+  &-heavy {
+    font-weight: var(--weight-900);
+  }
+
+  &-orange {
+    &-darker {
+      color: var(--redish-darker);
+    }
+
+    &-light {
+      color: var(--orange-red-lighter);
+    }
+  }
 }
