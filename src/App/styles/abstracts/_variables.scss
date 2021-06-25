@@ -2,53 +2,100 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-
-
-
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font: 'Kanit', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+  'Monaco', monospace !default;
 
+:root {
+  --color-danger-lighter: #67deb4;
+  --color-danger-darker: #18342b;
+  --color-danger-light-100: #e7edeb;
+  --color-danger-light-200: #d0dbd7;
+  --color-danger-primary: #2c5f4d;
+  --color-info-lighter: #6791de;
+  --color-info-darker: #182234;
+  --color-info-light-100: #e7e9ed;
+  --color-info-light-200: #d0d4db;
+  --color-info-primary: #2c3e5f;
+  --grey-tint-lightest: #ffffff;
+  --grey-tint-lighter: #efefef;
 
+  --grey-tint-100: #eaeaea;
+  --grey-tint-200: #d5d5d5;
+  --grey-tint-300: #c1c1c1;
+  --grey-tint-400: #acacac;
+  --grey-tint-500: #979797;
+  --grey-tint-600: #838383;
+  --grey-tint-700: #6e6e6e;
+  --grey-tint-800: #595959;
+  --grey-tint-900: #454545;
+  --grey-tint-darkest: #1a1a1a;
 
+  --orange-red-100: #f8ebe8;
+  --orange-red-200: #f2d8d1;
+  --orange-red-300: #ecc4ba;
+  --orange-red-400: #e5b1a3;
+  --orange-red-500: #df9d8d;
+  --orange-red-600: #d98a76;
+  --orange-red-700: #d2765f;
+  --orange-red-800: #cc6348;
+  --orange-red-900: #c65032;
+  --orange-red-lighter: #f0613d;
+  --orange-red-darker: #461c12;
 
+  --green-tint-100: #f8faf7;
+  --green-tint-200: #f1f5f0;
+  --green-tint-300: #eaf0e9;
+  --green-tint-400: #e3ebe1;
+  --green-tint-500: #dde6da;
+  --green-tint-600: #d6e1d3;
+  --green-tint-700: #cfdccb;
+  --green-tint-800: #c8d7c4;
+  --green-tint-900: #c2d2bd;
+  --green-tint-darker: #252824;
 
-/// Copy text color
-/// @type Color
-$text-color: rgb(34, 34, 34) !default;
+  --redish-100: #ede7e9;
+  --redish-200: #dbd0d4;
+  --redish-300: #c9b8be;
+  --redish-400: #b7a1a9;
+  --redish-500: #a68993;
+  --redish-400: #94727e;
+  --redish-300: #825a68;
+  --redish-200: #704353;
+  --redish-100: #5f2c3e;
+  --redish-lighter: #de6791;
+  --redish-darker: #341822;
 
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+  //Sizes
+  --size-1: 0.1rem;
+  --size-2: 0.2rem;
+  --size-4: 0.4rem;
+  --size-6: 0.6rem;
+  --size-8: 0.8rem;
+  --size-10: 1rem;
+  --size-14: 1.4rem;
+  --size-16: 1.6rem;
+  --size-18: 1.8rem;
+  --size-20: 2rem;
+  --size-24: 2.4rem;
+  --size-36: 3.6rem;
+  --size-40: 4rem;
+  --size-44: 4.4rem;
+  --size-60: 6rem;
+}
 
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
-
-
-
-
+//sizes
 
 /// Container's maximum width
 /// @type Length
-$max-width: 1180px !default;
-
-
-
-
+//$max-width: 1180px !default;
+$normal-max-width: 1366px !default;
+$large-max-width: 1920px !default;
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
@@ -59,13 +106,8 @@ $breakpoints: (
   'large': 1024px,
 ) !default;
 
-
-
-
-
-
 /// Relative or absolute URL where all assets are served from
 /// @type String
 /// @example scss - When using a CDN
-///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+//   $base-url: 'http://cdn.example.com/assets/';
+$base-url: './App/assets/' !default;

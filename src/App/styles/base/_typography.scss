@@ -1,7 +1,37 @@
 /**
  * Basic typography style for copy text
  */
+
+@import url();
+
 body {
-  color: $text-color;
-  font: normal 125% / 1.4 $text-font-stack;
+  font-size: var(--size-16);
+}
+
+.small-text {
+  font-size: var(--size-14);
+}
+
+h1 {
+  font-size: var(--size-44);
+}
+
+h2 {
+  font-size: var(--size-36);
+}
+
+h3 {
+  font-size: var(--size-24);
+}
+
+h4 {
+  font-size: var(--size-20);
+}
+
+h5 {
+  font-size: var(--size-18);
+}
+
+h6 {
+  font-size: var(--size-16);
 }
