@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const constructHtmlPageName = function () {
-  const pagesPath = path.join(process.cwd(), 'src', 'App', 'pages');
+  const pagesPath = path.join(process.cwd(), 'src', 'pages');
 
   const filesInPagesDir = fs.readdirSync(pagesPath);
 
@@ -45,28 +45,36 @@ const constructHtmlPageName = function () {
 
 const htmlPageNames = constructHtmlPageName();
 
-con;
+console.log(htmlPageNames);
 
 const multipleHtmlPlugins = htmlPageNames.map(name => {
-  // let chunkName;
+  let chunkName;
 
-  // if (name.includes('/')) {
-  //   const path = name.split('/');
-  //   chunkName = path[name.split('/').length - 1];
-  // } else {
-  //   chunkName = name;
-  // }
+  if (name.includes('/')) {
+    const path = name.split('/');
+    chunkName = path[name.split('/').length - 1];
 
+    if (chunkName.includes('-')) {
+      chunkName = chunkName.split('-')[0];
+    }
+  } else {
+    chunkName = name;
+  }
+
+  console.log(chunkName);
   return new htmlWebpackPlugin({
-    template: `./src/App/pages/${name}.html`, // relative path to the HTML files
+    template: `./src/pages/${name}.html`, // relative path to the HTML files
     filename: `pages/${name}.html`, // output HTML files
     inject: true,
-    chunks: ['main'], // respective JS files
+    chunks: ['main', chunkName], // respective JS files
   });
 });
 
 module.exports = {
   entry: {
+    main: './src/index.js',
+    defaul: './src/pages/deafault-page/deafault-page.js',
+    home: './src/pages/home-page/home-page.js',
     main: './src/index.js',
     vendor: './src/App/scripts/vendor/vendor.js',
   },
