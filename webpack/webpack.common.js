@@ -1,24 +1,51 @@
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+
+let htmlPageNames = ['helpers/typography'];
+let multipleHtmlPlugins = htmlPageNames.map(name => {
+  let chunkName;
+
+  if (name.includes('/')) {
+    const path = name.split('/');
+
+    chunkName = path[name.split('/').length - 1];
+  } else {
+    chunkName = name;
+  }
+
+  return new htmlWebpackPlugin({
+    template: `./src/App/pages/${name}.html`, // relative path to the HTML files
+    filename: `pages/${name}.html`, // output HTML files
+    inject: true,
+    chunks: ['main', chunkName], // respective JS files
+  });
+});
 
 module.exports = {
   entry: {
     main: './src/index.js',
     vendor: './src/App/scripts/vendor/vendor.js',
   },
-  output: {
-    path: path.resolve(__dirname, '../public/'),
-    publicPath: '',
-  },
+
   plugins: [
+    new DashboardPlugin(),
     new htmlWebpackPlugin({
       template: './src/index.html',
+      inject: true,
+      chunks: ['main'],
       scriptLoading: 'defer',
+      filename: 'index.html',
     }),
-    new DashboardPlugin(),
-  ],
+    // new htmlWebpackPlugin({
+    //   template: './src/App/pages/helpers/typography.html',
+    //   inject: true,
+    //   chunks: ['main', 'typography'],
+    //   scriptLoading: 'defer',
+    //   filename: 'pages/helpers/typography.html',
+    // }),
+    ...multipleHtmlPlugins,
+  ], //.concat(),
   module: {
     rules: [
       {
