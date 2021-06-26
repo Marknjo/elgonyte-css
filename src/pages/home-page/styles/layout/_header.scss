@@ -1,10 +1,34 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
-
+//header components
 //1. Logo
 //2. search form
 //3. signin section
 //4. cart button
+//5. category section
+//6. Nav links
 
 //overal
+//1. header top
+//2. header bottom
+.header {
+  width: 100%;
+  &-top {
+    width: 100%;
+    background-color: var(--redish-100);
+    padding: var(--size-10) 0;
+
+    &__inner {
+      display: flex;
+    }
+  }
+  &-bottom {
+    background-color: var(--redish-300);
+    width: 100%;
+
+    &__inner .nav-bottom {
+      display: flex;
+    }
+  }
+}
