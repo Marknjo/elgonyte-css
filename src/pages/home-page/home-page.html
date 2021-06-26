@@ -12,110 +12,193 @@
   </head>
   <body>
     <!-- //1. Header section -->
-    <header>
-      <span class="container-medium">
-        <img
-          src="./images/logo-large.png"
-          alt="Elgonyte Logo"
-          width="204px"
-          height="65px"
-          class="logo__main"
-        />
+    <header class="header">
+      <div class="header-top">
+        <div class="container-medium">
+          <img
+            src="./images/logo-large.png"
+            alt="Elgonyte Logo"
+            width="204px"
+            height="65px"
+            class="logo__main"
+          />
 
-        <form class="search-form">
-          <div class="search-form__group">
-            <div class="search-form__input form-input">
-              <label for="categories"
-                >All
-                <span>
-                  <svg>
-                    <use xlink:href="./images/caret.svg"></use>
-                  </svg>
-                </span>
-              </label>
-              <select id="categories">
-                <option>Suits</option>
-                <option>Shoes</option>
-                <option>Jewelry</option>
-                <option>Watches</option>
-                <option>Accessories</option>
-                <option>Bag packs</option>
-                <option>Shirts</option>
-              </select>
-            </div>
-
-            <div class="search-form__input form-input">
-              <label class="visually-hidden" for="search">Search</label>
-              <input type="text" name="search" id="search" />
-            </div>
-
-            <div class="search-form__action form-action">
-              <button type="submit">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-
-        <nav class="top-nav">
-          <ul class="top-nav-items">
-            <li class="top-nav__item">
-              <button class="top-nav__signin">
-                <span class="top-nav__signin-text">
-                  <p> 
-                    <span>Hi, Sign In Here</span>
-                    <span>Account & Lists</span>
-                  </p>
-                </span>
-                <span class="top-nav__signin-icon">
-                  <svg>
-                    <use xlink:href="./images/caret.svg"></use>
-                  </svg>
-                </span>
-              </button>
-
-              <div class="visually-hidden" id="signin-links">
-                <ul>
-                  <li>Login</li>
-                  <li>Account</li>
-                  <li>Orders</li>
-                  <li>Watch List</li>
-                </ul>
+          <form class="search-form">
+            <div class="search-form__group">
+              <div class="search-form__input form-input">
+                <label for="categories"
+                  >All
+                  <img src="./images/icon-caret.svg" alt="Caret Icon" />
+                </label>
+                <select id="categories">
+                  <option>Suits</option>
+                  <option>Shoes</option>
+                  <option>Jewelry</option>
+                  <option>Watches</option>
+                  <option>Accessories</option>
+                  <option>Bag packs</option>
+                  <option>Shirts</option>
+                </select>
               </div>
-            </li>
-            <li class="top-nav__item">
-              <button type="button" class="top-nav__cart">
-                <span class="top-nav__cart-qty">
-                  0
-                </span>
-                <span class="top-nav__cart-icon">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg> 
+
+              <div class="search-form__input form-input">
+                <label class="visually-hidden" for="search">Search</label>
+                <input type="text" name="search" id="search" />
+              </div>
+
+              <div class="search-form__action form-action">
+                <button type="submit">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <nav class="nav-top">
+            <ul class="nav-top-items">
+              <li class="nav-top__item">
+                <button class="nav-top__signin">
+                  <span class="nav-top__signin-text">
+                    <p>
+                      <span>Hi, Sign In Here</span>
+                      <span>Account & Lists</span>
+                    </p>
                   </span>
-                 <p class="top-nav__cart-text">Cart</p>
-                </span>
-              </button>
-            </li>
-          </ul>
-        </nav>
+                  <img
+                    class="nav-top__signin-icon"
+                    src="./images/icon-caret.svg"
+                    alt="Caret Icon"
+                  />
+                </button>
+
+                <div class="visually-hidden drop-down" id="signin-links">
+                  <ul class="drop-down__list">
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Login</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Account</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Orders</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Watch List</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-top__item">
+                <button type="button" class="nav-top__cart">
+                  <span class="nav-top__cart-qty"> 0 </span>
+                  <span class="nav-top__cart-icon">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
+                      </svg>
+                    </span>
+                    <p class="nav-top__cart-text">Cart</p>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ./Header-bottom section -->
+      <div class="header-bottom">
+        <div class="container-medium">
+          <nav class="nav-bottom">
+            <ul class="nav-bottom__list nav-bottom__list--left">
+              <li class="nav-bottom__item">
+                <button type="button" class="nav-bottom__categories">
+                  <img
+                    class="nav-bottom__categories-icon"
+                    src="./images/icon-menu-humberger.svg"
+                    alt="Humberger Icon"
+                  />
+                  <div class="nav-bottom__categories-text">
+                    <p>All Categories</p>
+                  </div>
+                  <img
+                    class="nav-bottom__categories-icon"
+                    src="./images/icon-caret.svg"
+                    alt="Caret Icon"
+                  />
+                </button>
+
+                <div class="visually-hidden drop-down" id="categories">
+                  <ul class="drop-down__list">
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Suits</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Shoes</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Jewelry</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Watches</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Bag packs</a>
+                    </li>
+                    <li class="drop-down__item">
+                      <a class="drop-down__link" href="#">Shirts</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-bottom__item">
+                <a class="nav-bottom__link" href="#">Today's Deal</a>
+              </li>
+              <li class="nav-bottom__item">
+                <a class="nav-bottom__link" href="#">Customer Service</a>
+              </li>
+              <li class="nav-bottom__item">
+                <a class="nav-bottom__link" href="#">Gift Card</a>
+              </li>
+            </ul>
+
+            <ul class="nav-bottom__list nav-bottom__list--right">
+              <li class="nav-bottom__item">
+                <a class="nav-bottom__link" href="#">Contact Us</a>
+              </li>
+              <li class="nav-bottom__item">
+                <a class="nav-bottom__link" href="#">Visit Our Terms</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
-    
+
     <div class="container-large">
       <!-- //2. Hero Section -->
       <!-- //3. Top Deals Section -->
