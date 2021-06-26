@@ -33,3 +33,13 @@ a {
     text-decoration: underline;
   }
 }
+
+.container {
+  &-medium {
+    max-width: var(--normal-max-width);
+  }
+
+  &-large {
+    max-width: var(--normal-max-width);
+  }
+}
