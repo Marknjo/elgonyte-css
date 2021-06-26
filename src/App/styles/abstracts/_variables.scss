@@ -98,6 +98,14 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
   --weight-700: 700;
   --weight-800: 800;
   --weight-900: 900;
+
+  //sizes
+
+  /// Container's maximum width
+  /// @type Length
+  //$max-width: 1180px !default;
+  --normal-max-width: 1366px;
+  --large-max-width: 1920px;
 }
 
 //sizes
