@@ -16,19 +16,83 @@
   width: 100%;
   &-top {
     width: 100%;
-    background-color: var(--redish-100);
+    background-color: var(--redish-900);
     padding: var(--size-10) 0;
 
     &__inner {
       display: flex;
     }
   }
+
   &-bottom {
-    background-color: var(--redish-300);
+    background-color: var(--redish-700);
     width: 100%;
 
     &__inner .nav-bottom {
       display: flex;
     }
+  }
+}
+
+//header components
+//1. Logo
+//2. search form
+.search-form {
+  margin: 0 auto;
+  &__group {
+    display: flex;
+  }
+}
+//3. signin section
+
+//6. Nav links
+//Nav Bottom
+.nav-top {
+  &__list {
+    display: flex;
+  }
+
+  &__signin {
+    display: flex;
+    align-items: center;
+  }
+
+  //4. cart button
+  &__cart {
+    display: flex;
+  }
+
+  &__cart-qty {
+  }
+
+  &__cart-icon {
+    display: flex;
+
+    svg {
+      width: 3.2rem;
+      height: 3.2rem;
+      color: var(--redish-100);
+    }
+  }
+
+  &__cart-text {
+  }
+}
+
+//Nav top
+.nav-bottom {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list--right {
+    margin-left: auto;
+  }
+
+  //5. category section
+  &__categories {
+    display: flex;
+    align-items: center;
   }
 }
