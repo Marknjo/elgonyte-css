@@ -5,17 +5,16 @@ const fs = require('fs');
 const { default: chalk } = require('chalk');
 
 console.log(
-  chalk.magenta(
-    ''.padEnd(5, '>') + '  Building templates from source folder: ./src/pages/'
-  )
+  chalk.magenta(''.padEnd(5, '>')) +
+    chalk.yellow(' [ Webpack Build Multi-Pages App]') +
+    chalk.magenta(' : Init building templates from source folder: ./src/pages/')
 );
 console.log('\n');
 console.time('Building Pages');
 
 /**
- * Builds html file names with 1 level deap nested folders
- *
- * @returns Object
+ * Builds a collection of html file names with 1 level deap nested folders
+ * @returns {Array} list of file names i.e. pages/home-page or about
  */
 const buildPagesHtmlFileNames = function () {
   const pagesPath = path.join(process.cwd(), 'src', 'pages');
@@ -58,8 +57,8 @@ const buildPagesHtmlFileNames = function () {
 };
 
 /**
- * Extract a file name given a path i.e. pages/home = home or pages/home-page = home
- * @param {String} fileName file path
+ * Extract a file name given a path i.e. pages/home = home or pages/home-page = home or about = about (pages/about.html)
+ * @param {String} fileName file name supplied as either about or pages/home-page
  * @returns {String}  an single string of a pages folder name or a entry identifier
  */
 const extractFileName = function (fileName) {
