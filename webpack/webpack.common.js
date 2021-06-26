@@ -96,9 +96,17 @@ const multipleHtmlPlugins = htmlPageNames.map(name => {
       )
   );
 
+  let fileName;
+  if (name.includes('/')) {
+    let htmlPath = name.split('/');
+    fileName = htmlPath[htmlPath.length - 1];
+  } else {
+    fileName = name;
+  }
+
   return new htmlWebpackPlugin({
     template: `./src/pages/${name}.html`, // relative path to the HTML files
-    filename: `pages/${name}.html`, // output HTML files
+    filename: `${fileName}.html`, // output HTML files
     inject: true,
     chunks: ['main', chunkName], // respective JS files
   });
