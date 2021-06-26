@@ -13,8 +13,109 @@
   <body>
     <!-- //1. Header section -->
     <header>
-      <div class="container-medium"></div>
+      <span class="container-medium">
+        <img
+          src="./images/logo-large.png"
+          alt="Elgonyte Logo"
+          width="204px"
+          height="65px"
+          class="logo__main"
+        />
+
+        <form class="search-form">
+          <div class="search-form__group">
+            <div class="search-form__input form-input">
+              <label for="categories"
+                >All
+                <span>
+                  <svg>
+                    <use xlink:href="./images/caret.svg"></use>
+                  </svg>
+                </span>
+              </label>
+              <select id="categories">
+                <option>Suits</option>
+                <option>Shoes</option>
+                <option>Jewelry</option>
+                <option>Watches</option>
+                <option>Accessories</option>
+                <option>Bag packs</option>
+                <option>Shirts</option>
+              </select>
+            </div>
+
+            <div class="search-form__input form-input">
+              <label class="visually-hidden" for="search">Search</label>
+              <input type="text" name="search" id="search" />
+            </div>
+
+            <div class="search-form__action form-action">
+              <button type="submit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <nav class="top-nav">
+          <ul class="top-nav-items">
+            <li class="top-nav__item">
+              <button class="top-nav__signin">
+                <span class="top-nav__signin-text">
+                  <p> 
+                    <span>Hi, Sign In Here</span>
+                    <span>Account & Lists</span>
+                  </p>
+                </span>
+                <span class="top-nav__signin-icon">
+                  <svg>
+                    <use xlink:href="./images/caret.svg"></use>
+                  </svg>
+                </span>
+              </button>
+
+              <div class="visually-hidden" id="signin-links">
+                <ul>
+                  <li>Login</li>
+                  <li>Account</li>
+                  <li>Orders</li>
+                  <li>Watch List</li>
+                </ul>
+              </div>
+            </li>
+            <li class="top-nav__item">
+              <button type="button" class="top-nav__cart">
+                <span class="top-nav__cart-qty">
+                  0
+                </span>
+                <span class="top-nav__cart-icon">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg> 
+                  </span>
+                 <p class="top-nav__cart-text">Cart</p>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
+    
     <div class="container-large">
       <!-- //2. Hero Section -->
       <!-- //3. Top Deals Section -->

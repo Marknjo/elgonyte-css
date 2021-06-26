@@ -34,12 +34,19 @@ a {
   }
 }
 
+%container {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .container {
   &-medium {
+    @extend %container !optional;
     max-width: var(--normal-max-width);
   }
 
   &-large {
+    @extend %container !optional;
     max-width: var(--normal-max-width);
   }
 }
