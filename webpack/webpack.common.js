@@ -13,47 +13,55 @@ console.log('\n');
 console.time('Building Pages');
 
 /**
+ * Base path
+ */
+const pagesPath = path.join(process.cwd(), 'src', 'pages');
+const pagesPathExists = fs.existsSync(pagesPath);
+
+/**
  * Builds a collection of html file names with 1 level deap nested folders
  * @returns {Array} list of file names i.e. pages/home-page or about
  */
-const buildPagesHtmlFileNames = function () {
-  const pagesPath = path.join(process.cwd(), 'src', 'pages');
+const buildPagesHtmlFileNames = function (pagesPath, pagesPathExists) {
+  if (pagesPathExists) {
+    const filesInPagesDir = fs.readdirSync(pagesPath);
 
-  const filesInPagesDir = fs.readdirSync(pagesPath);
+    const pagesDirs = filesInPagesDir.filter(file => !file.includes('.'));
 
-  const pagesDirs = filesInPagesDir.filter(file => !file.includes('.'));
+    const getHtmlFilesInADir = function (filesInPagesDir, pageDir) {
+      return filesInPagesDir
+        .filter(file => file.includes('.html'))
+        .map(htmlFile =>
+          pageDir
+            ? `${pageDir}/${htmlFile.split('.')[0]}`
+            : htmlFile.split('.')[0]
+        );
+    };
 
-  const getHtmlFilesInADir = function (filesInPagesDir, pageDir) {
-    return filesInPagesDir
-      .filter(file => file.includes('.html'))
-      .map(htmlFile =>
-        pageDir
-          ? `${pageDir}/${htmlFile.split('.')[0]}`
-          : htmlFile.split('.')[0]
-      );
-  };
+    let getHtmlFilesInSubDir = [];
 
-  let getHtmlFilesInSubDir = [];
+    const htmlFilesInThePagesDir = getHtmlFilesInADir(filesInPagesDir);
 
-  const htmlFilesInThePagesDir = getHtmlFilesInADir(filesInPagesDir);
+    if (pagesDirs.length > 0) {
+      let htmlFilesInADir = [];
+      //check if they are valid dir
+      for (const pageDir of pagesDirs) {
+        let currentPageDir = path.join(pagesPath, pageDir);
+        if (fs.existsSync(currentPageDir)) {
+          //get the html files in the path
+          const getDirFiles = fs.readdirSync(currentPageDir);
 
-  if (pagesDirs.length > 0) {
-    let htmlFilesInADir = [];
-    //check if they are valid dir
-    for (const pageDir of pagesDirs) {
-      let currentPageDir = path.join(pagesPath, pageDir);
-      if (fs.existsSync(currentPageDir)) {
-        //get the html files in the path
-        const getDirFiles = fs.readdirSync(currentPageDir);
-
-        htmlFilesInADir.push(getHtmlFilesInADir(getDirFiles, pageDir));
+          htmlFilesInADir.push(getHtmlFilesInADir(getDirFiles, pageDir));
+        }
       }
+
+      getHtmlFilesInSubDir = htmlFilesInADir.flat();
     }
 
-    getHtmlFilesInSubDir = htmlFilesInADir.flat();
+    return [...getHtmlFilesInSubDir, ...htmlFilesInThePagesDir];
+  } else {
+    return null;
   }
-
-  return [...getHtmlFilesInSubDir, ...htmlFilesInThePagesDir];
 };
 
 /**
@@ -78,39 +86,41 @@ const extractFileName = function (fileName) {
 };
 
 //holds htmlPages file name array
-const htmlPageNames = buildPagesHtmlFileNames();
+const htmlPageNames = buildPagesHtmlFileNames(pagesPath, pagesPathExists);
 
 /**
  * Auto-generates Html pages to merge with the plugins (Uses: htmlWebpackPlugin)
  */
-const multipleHtmlPlugins = htmlPageNames.map(name => {
-  let chunkName = extractFileName(name);
+const multipleHtmlPlugins =
+  htmlPageNames &&
+  htmlPageNames.map(name => {
+    let chunkName = extractFileName(name);
 
-  console.log(
-    chalk.white(' > ') +
-      chalk.bgBlack.gray(
-        `[Loading ${chunkName.toUpperCase()} template...] : `
-      ) +
-      chalk.underline.blue(
-        path.join(process.cwd(), 'src', 'pages', `${name}.html`)
-      )
-  );
+    console.log(
+      chalk.white(' > ') +
+        chalk.bgBlack.gray(
+          `[Loading ${chunkName.toUpperCase()} template...] : `
+        ) +
+        chalk.underline.blue(
+          path.join(process.cwd(), 'src', 'pages', `${name}.html`)
+        )
+    );
 
-  let fileName;
-  if (name.includes('/')) {
-    let htmlPath = name.split('/');
-    fileName = htmlPath[htmlPath.length - 1];
-  } else {
-    fileName = name;
-  }
+    let fileName;
+    if (name.includes('/')) {
+      let htmlPath = name.split('/');
+      fileName = htmlPath[htmlPath.length - 1];
+    } else {
+      fileName = name;
+    }
 
-  return new htmlWebpackPlugin({
-    template: `./src/pages/${name}.html`, // relative path to the HTML files
-    filename: `${fileName}.html`, // output HTML files
-    inject: true,
-    chunks: ['main', chunkName], // respective JS files
+    return new htmlWebpackPlugin({
+      template: `./src/pages/${name}.html`, // relative path to the HTML files
+      filename: `${fileName}.html`, // output HTML files
+      inject: true,
+      chunks: ['main', chunkName], // respective JS files
+    });
   });
-});
 
 //console logs
 console.log(
@@ -170,7 +180,7 @@ module.exports = {
       scriptLoading: 'defer',
       filename: 'index.html',
     }),
-    ...multipleHtmlPlugins,
+    ...(pagesPathExists && multipleHtmlPlugins),
   ],
   module: {
     rules: [
