@@ -91,7 +91,7 @@ const htmlPageNames = buildPagesHtmlFileNames(pagesPath, pagesPathExists);
 /**
  * Auto-generates Html pages to merge with the plugins (Uses: htmlWebpackPlugin)
  */
-const multipleHtmlPlugins =
+let multipleHtmlPlugins =
   htmlPageNames &&
   htmlPageNames.map(name => {
     let chunkName = extractFileName(name);
@@ -122,46 +122,57 @@ const multipleHtmlPlugins =
     });
   });
 
-//console logs
-console.log(
-  chalk.bgCyanBright.black(' [ Success! ] ') +
-    chalk.green(' - Html templates lodead successfully 😊!')
-);
-console.log('\n');
+if (pagesPathExists) {
+  //console logs
+  console.log(
+    chalk.bgCyanBright.black(' [ Success! ] ') +
+      chalk.green(' - Html templates lodead successfully 😊!')
+  );
+  console.log('\n');
+}
 
 /**
  * Autogenerate entries.
  */
-const pagesRootDir = path.join(process.cwd(), 'src', 'pages');
-const pagesEntries = htmlPageNames.reduce((currEntries, fileName) => {
-  const filePath = path.join(pagesRootDir, `${fileName}.js`);
+const pagesEntries =
+  pagesPathExists &&
+  htmlPageNames.reduce((currEntries, fileName) => {
+    const filePath = path.join(pagesPath, `${fileName}.js`);
 
-  if (fs.existsSync(filePath)) {
-    const file = extractFileName(fileName);
-    //show feedback on the console
-    console.log(
-      chalk.white(' > ') +
-        chalk.bgBlack.gray(`[ Loading ${file.toUpperCase()} entry] : `) +
-        chalk.underline.blue(filePath)
-    );
+    if (fs.existsSync(filePath)) {
+      const file = extractFileName(fileName);
+      //show feedback on the console
+      console.log(
+        chalk.white(' > ') +
+          chalk.bgBlack.gray(`[ Loading ${file.toUpperCase()} entry] : `) +
+          chalk.underline.blue(filePath)
+      );
 
-    currEntries = { ...currEntries, [file]: filePath };
-  }
-  return currEntries;
-}, {});
+      currEntries = { ...currEntries, [file]: filePath };
+    }
+    return currEntries;
+  }, {});
 
-//console logs
-console.log(
-  chalk.bgCyanBright.black('[ Success! ] ') +
-    chalk.green(' - Entry paths loaded successfully 😊!')
-);
-console.log('\n');
-console.log(
-  chalk.bgGreen.black('[ Success! ] ') +
-    chalk.green(' All pages built successfully  😊!')
-);
-console.timeEnd('Building Pages');
-console.log('\n');
+if (pagesPathExists) {
+  //console logs
+  console.log(
+    chalk.bgCyanBright.black('[ Success! ] ') +
+      chalk.green(' - Entry paths loaded successfully 😊!')
+  );
+  console.log('\n');
+  console.log(
+    chalk.bgGreen.black('[ Success! ] ') +
+      chalk.green(' All pages built successfully  😊!')
+  );
+  console.timeEnd('Building Pages');
+  console.log('\n');
+} else {
+  console.log(chalk.blue('No pages found in the project!'));
+  console.timeEnd('Building Pages');
+  console.log('\n');
+
+  multipleHtmlPlugins = [];
+}
 
 //Webpack Modules
 module.exports = {
@@ -180,7 +191,7 @@ module.exports = {
       scriptLoading: 'defer',
       filename: 'index.html',
     }),
-    ...(pagesPathExists && multipleHtmlPlugins),
+    ...multipleHtmlPlugins,
   ],
   module: {
     rules: [
